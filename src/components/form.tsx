@@ -1,25 +1,26 @@
 import { useForm } from "@mantine/form";
-import { TextInput, Button, Box, Group } from "@mantine/core";
+import { TextInput,Checkbox, Button, Box, Group, } from "@mantine/core";
 import { FormValues } from "./types";
+import '@mantine/core/styles/global.css';
+import '@mantine/core/styles.css';
 import './form.css'
+
 
 const SignInForm = () => {
   const form = useForm<FormValues>({
     initialValues: {
-      name: "",
-      email: "",
+      name: '',
+      email: '',
     },
   });
 
-  const handleSubmit = (values: FormValues) => {
-    console.log("Отправленные данные:", values);
-  };
+
 
   return (
-    <Box className="signin-form-container">
-      <form onSubmit={form.onSubmit(handleSubmit)}>
+    <Box className="signin-form-container" >
+      <form onSubmit={form.onSubmit((values) => console.log(values))}>
         <TextInput
-          label="Name"
+          label="Name" 
           placeholder="Your name"
           {...form.getInputProps("name")}
           classNames={{
@@ -43,6 +44,10 @@ const SignInForm = () => {
           <Button type="submit" className="signin-button">
             Submit
           </Button>
+          <Checkbox
+      defaultChecked
+      label="I agree to sell my privacy"
+    />
         </Group>
       </form>
     </Box>
