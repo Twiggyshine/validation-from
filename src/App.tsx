@@ -1,5 +1,6 @@
 import './App.css'
-import SimpleForm from "./components/form.jsx";
+import SignInForm from './components/form.jsx';
+
 
 
 
@@ -8,7 +9,7 @@ function App() {
 
   return (
     <>
-      <SimpleForm />
+      <SignInForm />
     </>
   )
 }
