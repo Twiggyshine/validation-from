@@ -67,7 +67,7 @@ const SignForm = () => {
           mb="md"
         />
         {/* Подтверждение пароля только для регистрации */}
-        {formType === "signup" && (
+        
           <PasswordInput
             label="Password"
             placeholder="Your password"
@@ -78,7 +78,8 @@ const SignForm = () => {
             }}
             mb="md"
           />
-        )}
+      
+        {formType === "signup" && (
         <PasswordInput
           label="Confirm Password"
           placeholder="Confirm your password"
@@ -89,6 +90,7 @@ const SignForm = () => {
           }}
           mb="md"
         />
+      )}
 
         <Group justify="space-between" mt="md" className="auth-button-group">
           <Checkbox defaultChecked label="I agree to sell my privacy" />
