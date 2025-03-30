@@ -1,15 +1,22 @@
+
+// общая проверка на ввод данных
 export const fieldСheck = (value: string) => {
   if (!value) return "Заполните поле ввода";
   return null;
 };
-
-
+// проверка на поле email
 export const validateEmail = (value: string) => {
-    if (!value) return "Введите email";
     if (!value.includes("@")) return "Email должен содержать @";
     return null;
   };
 
-
+// проверка на пароль
  export const validatePassword = (value: string) => (value.length < 6 ? 'Пароль должен быть не менее 6 символов' : null)
 
+//  соответствие пароля + проверка на ввод данных
+ export const validatePasswordConfirm = (value: string, password: string) => {
+  const emptyError = fieldСheck(value);
+  if (emptyError) return emptyError;
+  
+  return value !== password ? 'Пароли не совпадают' : null;
+};
