@@ -1,9 +1,13 @@
+// import { useState } from 'react';
 import { useForm } from "@mantine/form";
 import { TextInput,Checkbox, Button, Box, Group, } from "@mantine/core";
 import { FormValues } from "./types";
+import { validateEmail } from "./validateEmail";
 import '@mantine/core/styles/global.css';
 import '@mantine/core/styles.css';
 import './form.css'
+
+
 
 
 const SignInForm = () => {
@@ -12,6 +16,9 @@ const SignInForm = () => {
       name: '',
       email: '',
     },
+    validate: {
+      email: validateEmail // используем импортированную функцию
+    }
   });
 
 
