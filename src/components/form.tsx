@@ -39,7 +39,7 @@ const SignForm = () => {
     },
   });
 
-
+// запрос для успешной авторизации
   const handleClickLogin = async function(event: React.FormEvent) {
     event.preventDefault()
     try { 
