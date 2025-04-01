@@ -13,12 +13,14 @@ import { FormValues } from "./types";
 import {
   validateEmail,
   validatePassword,
-  fieldСheck,
+  fieldCheck,
   validatePasswordConfirm,
 } from "./validation";
 import "@mantine/core/styles/global.css";
 import "@mantine/core/styles.css";
 import "./form.css";
+
+
 
 const SignForm = () => {
   const [formType, setFormType] = useState<"signin" | "signup">("signin");
@@ -30,12 +32,34 @@ const SignForm = () => {
       passwordConfirm: "",
     },
     validate: {
-      email: (value) => fieldСheck(value) || validateEmail(value),
-      password: (value) => fieldСheck(value) || validatePassword(value),
+      email: (value) => fieldCheck(value) || validateEmail(value),
+      password: (value) => fieldCheck(value) || validatePassword(value),
       passwordConfirm: (value, values) =>
         validatePasswordConfirm(value, values.password),
     },
   });
+
+
+  const handleClickLogin = async function(event: React.FormEvent) {
+    event.preventDefault()
+    try { 
+      await fetch('http://localhost:3000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: form.values.email,
+        password: form.values.password,
+      }),
+    })
+
+
+  }
+  catch (err) {
+    console.log(err)
+  }
+}
 
   return (
     <Box className="sign-form-container">
@@ -94,7 +118,7 @@ const SignForm = () => {
 
         <Group justify="space-between" mt="md" className="auth-button-group">
           <Checkbox defaultChecked label="I agree to sell my privacy" />
-          <Button type="submit" className="auth-button">
+          <Button onClick={handleClickLogin} type="submit" className="auth-button" >
             {formType === "signin" ? "Sign In" : "Sign Up"}
           </Button>
         </Group>

@@ -1,6 +1,6 @@
 
 // общая проверка на ввод данных
-export const fieldСheck = (value: string) => {
+export const fieldCheck = (value: string) => {
   if (!value) return "Заполните поле ввода";
   return null;
 };
@@ -15,7 +15,7 @@ export const validateEmail = (value: string) => {
 
 //  соответствие пароля + проверка на ввод данных
  export const validatePasswordConfirm = (value: string, password: string) => {
-  const emptyError = fieldСheck(value);
+  const emptyError = fieldCheck(value);
   if (emptyError) return emptyError;
   
   return value !== password ? 'Пароли не совпадают' : null;
